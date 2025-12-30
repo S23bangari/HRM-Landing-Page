@@ -57,7 +57,7 @@ export function AnimatedTooltipPreview() {
 
 const Review = () => {
   return (
-    <div className="max-w-7xl mx-auto flex flex-col justify-center items-center px-4 py-10">
+    <div className="max-w-7xl mx-auto mt-14 flex flex-col justify-center items-center px-4 py-10">
       <div className="
         w-full flex flex-col 
         lg:flex-row lg:justify-between lg:items-center 

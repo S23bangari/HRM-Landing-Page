@@ -78,7 +78,9 @@ const HeroTwo = () => {
                 relative
                 border-r
                 border-l
-                ${index < 3 ? "border-b" : ""}
+                ${index < 5 ? "border-b" : ""}
+                ${index === 4 ? "sm:border-b-0" : ""}
+                ${index === 3 ? "md:border-b-0" : ""}
                 p-6
                 border-gray-200 
                 bg-white 

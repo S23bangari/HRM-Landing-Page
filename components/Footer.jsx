@@ -64,7 +64,7 @@ const Footer = () => {
       </div>
 
       {/* Animated Text Section */}
-      <div className="mt-16">
+      <div className="hidden md:block md:mt-16">
         <TextHoverEffectDemo />
       </div>
     </footer>

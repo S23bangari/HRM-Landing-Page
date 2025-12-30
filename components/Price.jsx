@@ -41,7 +41,7 @@ const Price = () => {
     },
   ];
   return (
-    <main className="w-full min-h-screen flex flex-col justify-center items-center text-center">
+    <main className="w-full min-h-screen mt-14 flex flex-col justify-center items-center text-center">
       <h1 className="text-5xl text-[#374053] font-bold mb-6">
         Simple pricing for advance people
       </h1>
