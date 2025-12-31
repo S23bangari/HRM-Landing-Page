@@ -59,7 +59,7 @@ const Review = () => {
   return (
     <div className="max-w-7xl mx-auto mt-14 flex flex-col justify-center items-center px-4 py-10">
       <div className="
-        w-full flex flex-col 
+        w-full flex flex-col items-center px-10
         lg:flex-row lg:justify-between lg:items-center 
         gap-10
       ">
@@ -76,7 +76,8 @@ const Review = () => {
           </p>
 
           <div className="
-            flex flex-col sm:flex-row sm:items-center 
+            flex flex-col sm:flex-row 
+            items-center sm:items-center 
             justify-center lg:justify-start 
             gap-4">
             <AnimatedTooltipPreview />

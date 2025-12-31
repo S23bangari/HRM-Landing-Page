@@ -3,7 +3,7 @@ import { PhoneIcon, Mail, Rocket } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center px-6 sm:px-8 py-20 bg-gradient-to-b from-white to-gray-100">
+    <div id="contact" className="w-full flex flex-col items-center justify-center px-6 sm:px-8 py-20 bg-gradient-to-b from-white to-gray-100">
       <div className="max-w-4xl mx-auto text-center">
 
         {/* Heading */}

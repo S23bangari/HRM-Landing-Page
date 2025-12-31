@@ -54,7 +54,7 @@ const iconMap = {
 
 const Features = () => {
   return (
-    <main className="w-full flex flex-col mt-20 mb-40 bg-white">
+    <main id="features" className="w-full flex flex-col mt-20 mb-40 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-4 text-[#374053]">

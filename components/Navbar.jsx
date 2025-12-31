@@ -1,12 +1,30 @@
 "use client";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
+import ContactForm from "./ContactForm";
+
+const list = [
+  {
+    name: "Features",
+    href: "#features",
+  },
+  {
+    name: "Pricing",
+    href: "#pricing",
+  },
+  {
+    name: "Contact",
+    href: "#contact",
+  }
+];
 
 const Navbar = () => {
   const ref = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +37,19 @@ const Navbar = () => {
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMenuOpen(false);
+    }
+  };
+
+  const handleFormToggle = () => {
+    setFormOpen(!formOpen);
+  };
 
   return (
     <nav
@@ -59,6 +90,7 @@ const Navbar = () => {
               scrolled ? "h-6 w-6" : "h-8 w-8"
             }`}
           />
+          <Link href="/">
           <h1
             className={`${
               darkMode ? "text-white" : "text-black"
@@ -66,24 +98,26 @@ const Navbar = () => {
           >
             Ktechnoit
           </h1>
+          </Link>
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
-          {["Features", "Pricing", "Contact"].map((item) => (
-            <li key={item}>
+          {list.map((item) => (
+            <li key={item.name}>
               <a
-                href="#"
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={`
-                  px-3 py-2 rounded-full transition-all
+                  text-lg px-3 py-2 rounded-full transition-all cursor-pointer
                   ${
                     darkMode
-                      ? "text-white hover:text-gray-200 hover:bg-zinc-800"
-                      : "text-black hover:text-gray-700 hover:bg-gray-200"
+                      ? "text-white hover:bg-zinc-800"
+                      : "text-black hover:bg-gray-200"
                   }
                 `}
               >
-                {item}
+                {item.name}
               </a>
             </li>
           ))}
@@ -107,6 +141,7 @@ const Navbar = () => {
           <button
             className={`px-6 py-2 font-bold rounded-lg border border-[#d4d5d6] shadow-2xl
               transition-transform duration-300 hover:-translate-y-1`}
+            onClick={handleFormToggle}
           >
             Book a Call
           </button>
@@ -131,12 +166,13 @@ const Navbar = () => {
         `}
       >
         <ul className="flex flex-col items-center space-y-4 py-6">
-          {["Features", "Pricing", "Contact"].map((item) => (
-            <li key={item}>
+          {list.map((item) => (
+            <li key={item.name}>
               <a
-                href="#"
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className={`
-                  text-lg px-3 py-2 rounded-full transition-all
+                  text-lg px-3 py-2 rounded-full transition-all cursor-pointer
                   ${
                     darkMode
                       ? "text-white hover:bg-zinc-800"
@@ -144,7 +180,7 @@ const Navbar = () => {
                   }
                 `}
               >
-                {item}
+                {item.name}
               </a>
             </li>
           ))}
@@ -167,11 +203,15 @@ const Navbar = () => {
               w-40 py-2 rounded-lg font-bold
               ${darkMode ? "bg-white text-black" : "bg-black text-white"}
             `}
+            onClick={handleFormToggle}
           >
             Book a Call
           </button>
         </ul>
       </div>
+
+      {/* Form Modal */}
+      {formOpen && <ContactForm isModal={true} onClose={handleFormToggle} />}
     </nav>
   );
 };
